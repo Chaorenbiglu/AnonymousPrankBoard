@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>匿名留言板 - 恶搞版</title>
+</head>
+<body>
+    <h1>留下你的匿名留言吧！</h1>
+    <textarea id="message" rows="4" cols="50"></textarea><br>
+    <button onclick="submitMessage()">提交</button>
+    <h2>留言列表</h2>
+    <ul id="messages"></ul>
+    <script>
+        function submitMessage() {
+            let msg = document.getElementById("message").value;
+            let ip = "IP: " + (Math.random() * 255).toFixed(0) + "." + 
+                     (Math.random() * 255).toFixed(0) + "." + 
+                     (Math.random() * 255).toFixed(0) + "." + 
+                     (Math.random() * 255).toFixed(0);
+            let list = document.getElementById("messages");
+            let item = document.createElement("li");
+            item.innerText = msg + " (偷偷记录: " + ip + ")";
+            list.appendChild(item);
+            document.getElementById("message").value = "";
+        }
+    </script>
+</body>
+</html>
